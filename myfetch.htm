@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+    var url = "https://newsapi.org/v2/everything?q=modi&from=2019-12-11&sortBy=publishedAt&apiKey=4431feeb1f68434185f389172a2274f9";
+    let out = ""
+    fetch(url)
+    .then( resp => {
+        console.log(resp)
+        return resp.json()
+    })
+    .then(resp => {
+        console.log(resp)
+        out = "<ul>";
+            resp.articles.forEach(e => {
+                out += `<li>${e.title}</li>`;
+            });
+            out += "</ul>";
+            mydiv1.innerHTML = out;
+    })
+    .catch( err => {
+        out = `Error: ${err}`;
+        console.log(err)
+        mydiv1.innerHTML=out;
+    })
+    </script>
+</head>
+<body>    
+        <div id="mydiv1">
+                <h1>Loading......</h1>
+        </div>
+</body>
+</html>

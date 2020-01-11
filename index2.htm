@@ -7,6 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>kuch bhi</h1>
+    <script>
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+        if(http.readyState==4){
+            let data = JSON.parse(http.responseText);
+            let out = "<ul>";
+            data.articles.forEach(e => {
+                out += `<li>${e.title}</li>`;
+                console.log(e.title);                
+            });
+            out += "</ul>";
+            mydiv1.innerHTML = out;
+        }
+    }
+    var url = "https://newsapi.org/v2/everything?q=modi&from=2019-12-11&sortBy=publishedAt&apiKey=4431feeb1f68434185f389172a2274f9";
+    http.open("GET", url);
+    http.send();
+    </script>
+    <div id="mydiv1">
+        <h1>Loading......</h1>
+    </div>
 </body>
 </html>
