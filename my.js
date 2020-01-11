@@ -1,0 +1,1 @@
+function m1(){console.log("aaaya");document.getElementById("myh1").innerHTML="Bla Bla777777!!";}document.addEventListener("DOMContentLoaded", m1); 

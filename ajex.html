@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    var url = "https://newsapi.org/v2/everything?q=trump&from=2019-12-10&sortBy=publishedAt&apiKey=4431feeb1f68434185f389172a2274f9";
+    var http = new XMLHttpRequest();
+    http.onreadystatechange = ()=>{
+        if(http.readyState==4){
+            var data = JSON.parse(http.responseText);
+            var s1 = "";
+            data.articles.forEach(e => {
+                s1 += `<h4>${e.title}</h4>`
+            });
+            mydiv1.innerHTML =s1;
+        }
+    }
+    http.open("GET", url);
+    http.send()
+</script>
+<body>
+    <div id="mydiv1">Loading........</div>
+</body>
+</html>
